@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\Utility\\Utility.csproj",
+      "projectUniqueName": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj",
       "projectName": "Utility",
-      "projectPath": "C:\\Proyectos\\Utility\\Utility.csproj",
+      "projectPath": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj",
       "packagesPath": "C:\\Users\\m_ang\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\Utility\\obj\\",
+      "outputPath": "C:\\Proyectos\\ERP-Command\\Utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

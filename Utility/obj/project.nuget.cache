@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0t6QzjRcfOzWAjVyWlttjb8GETJUSIPlUDHiZmeoGTnZ3YhH+2ZqvNQWwdKAxKbwB7DQ3i8jAOugbI/8L5SEAA==",
+  "dgSpecHash": "KhkFN/T1ScX8uspR5F8BGUzrqZ+LENewpKUb+WndVOLzZXZvbJ91VM8aozj3j6un4rhApR6zeWLsyQDfktjKug==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\Utility\\Utility.csproj",
+  "projectFilePath": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

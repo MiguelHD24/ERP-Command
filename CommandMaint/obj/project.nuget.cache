@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4mEI1PskQnpQcB9fcC+sGCtwvk7E12BZJVbxJzNF3Xo6y3KfPw3kVSvg58ztivtj+SQmA0q96ME6Rr61BGkN3Q==",
+  "dgSpecHash": "IERWqAFN7yhKGK8M6tMlIuZHMqFADLpncKLTWpb0fo+DYNeEh1uEqLBo6bfGztV6xPy5cpz3Y/cDZ7qshQN3ng==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj",
+  "projectFilePath": "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\m_ang\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\m_ang\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

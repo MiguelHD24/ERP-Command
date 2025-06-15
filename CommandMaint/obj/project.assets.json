@@ -5049,11 +5049,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj",
+      "projectUniqueName": "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj",
       "projectName": "CommandMaint",
-      "projectPath": "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj",
+      "projectPath": "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj",
       "packagesPath": "C:\\Users\\m_ang\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\CommandMaint\\obj\\",
+      "outputPath": "C:\\Proyectos\\ERP-Command\\CommandMaint\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5075,8 +5075,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Proyectos\\Utility\\Utility.csproj": {
-              "projectPath": "C:\\Proyectos\\Utility\\Utility.csproj"
+            "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj": {
+              "projectPath": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj"
             }
           }
         }

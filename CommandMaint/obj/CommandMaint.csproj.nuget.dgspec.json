@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj": {}
+    "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj": {
+    "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj",
+        "projectUniqueName": "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj",
         "projectName": "CommandMaint",
-        "projectPath": "C:\\Proyectos\\CommandMaint\\CommandMaint.csproj",
+        "projectPath": "C:\\Proyectos\\ERP-Command\\CommandMaint\\CommandMaint.csproj",
         "packagesPath": "C:\\Users\\m_ang\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CommandMaint\\obj\\",
+        "outputPath": "C:\\Proyectos\\ERP-Command\\CommandMaint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Proyectos\\Utility\\Utility.csproj": {
-                "projectPath": "C:\\Proyectos\\Utility\\Utility.csproj"
+              "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj": {
+                "projectPath": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj"
               }
             }
           }
@@ -91,14 +91,14 @@
         }
       }
     },
-    "C:\\Proyectos\\Utility\\Utility.csproj": {
+    "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Utility\\Utility.csproj",
+        "projectUniqueName": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj",
         "projectName": "Utility",
-        "projectPath": "C:\\Proyectos\\Utility\\Utility.csproj",
+        "projectPath": "C:\\Proyectos\\ERP-Command\\Utility\\Utility.csproj",
         "packagesPath": "C:\\Users\\m_ang\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Utility\\obj\\",
+        "outputPath": "C:\\Proyectos\\ERP-Command\\Utility\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
