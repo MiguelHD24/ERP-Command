@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Proyectos\\CommandMaint\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CommandMaint.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CommandMaint.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\CommandMaint\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\CommandMaint\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\CommandMaint\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Proyectos\\CommandMaint\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CommandMaint.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CommandMaint.props",
+      "PackagePath": "build\\CommandMaint.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CommandMaint.props",
+      "PackagePath": "buildMultiTargeting\\CommandMaint.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CommandMaint.props",
+      "PackagePath": "buildTransitive\\CommandMaint.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

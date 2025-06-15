@@ -1,0 +1,301 @@
+﻿@layout LoginLayout
+@page "/"
+@rendermode InteractiveServer
+@inherits LayoutComponentBase
+@inject NavigationManager NM
+@inject IJSRuntime JS
+@inject ISweeAlert SWA
+@inject ISHA256 SHA
+@inject IGeneral GRAL
+@inject IPasswordUtility PassUtility
+@inject ProtectedSessionStorage SessionStorage
+@using Authentication
+@inject IAuthentication Authentication
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+    </symbol>
+</svg>
+<div data-bs-theme="dark">
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme"
+                type="button"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                aria-label="Toggle theme (auto)">
+            <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" @onclick='() => CambiarTema("light")' data-bs-theme-value="light" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+                    Light
+                    <svg id="ckLight" class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" @onclick='() => CambiarTema("dark")' data-bs-theme-value="dark" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+                    Dark
+                    <svg id="ckDark" class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" @onclick='() => CambiarTema("auto")' data-bs-theme-value="auto" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+                    Auto
+                    <svg id="ckAuto" class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div style="width:350px;margin-left:auto;margin-right:auto">
+        <div style="width:350px;text-align:center" class="mt-2">
+            <img class="mb-4" src="./images/LOGO_SIM.png" alt="" width="200" height="200">
+            <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+        </div>
+
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" @bind=UserName>
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" @bind=Pass>
+            <label for="floatingPassword">Contraseña</label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit" @onclick=IniciarSesion>Entrar</button>
+        <a class="OlvidePass" data-bs-toggle="modal" data-bs-target="#exampleModal">Olvide mi contraseña</a>
+        <p class="mt-3 mb-3 text-body-secondary">&copy; ALLDevSolutions 2024</p>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Recuperación de Contraseña</h1>
+                <button @onclick=ResetCorreo type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <h5>Usuario</h5>
+                    <div class="container">
+                        <input type="text" maxlength="50" @bind-value=UserNameOfRecoveryPassword @oninput=ValidateLoginOfRecoveryPassword class="form-control @borderUserName" placeholder="usuario" />
+                    </div>
+                </div>
+                <div class="row">
+                    <h5>Correo</h5>
+                    <div class="container">
+                        <input type="email" @bind-value=Correo @oninput=ValidateEmailOfRecoveryPass class="form-control @borderEmail" placeholder="correo@sim.com" />
+                        <p class="disclaimer">Sigue los pasos enviados al correo asociado a tu cuenta de usuario.</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button @onclick=ResetCorreo type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button @onclick=RestablecerPassword type="button" class="btn btn-primary @buttonEnabled">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public string UserName { get; set; } = "";
+    public string Pass { get; set; } = "";
+    public byte[]? Password { get; set; }
+    public string? Correo { get; set; }
+    public string? borderEmail { get; set; } = "";
+    public string? borderUserName { get; set; } = "";
+    public string? buttonEnabled { get; set; } = "disabled";
+    public string? UserNameOfRecoveryPassword { get; set; }
+
+    private bool Validaciones()
+    {
+        eColors.warning = "#FFB000";
+
+        if (string.IsNullOrEmpty(UserName) || string.IsNullOrWhiteSpace(UserName))
+        {
+            SWA.Message(JS, "Ingrese su nombre de usuario", eIcon.warning, align: eAlign.center);
+            return false;
+        }
+        if (UserName.Length > 20)
+        {
+            SWA.Message(JS, "Las credenciales ingresadas no son correctas.", eIcon.warning, align: eAlign.center);
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(Pass) || string.IsNullOrWhiteSpace(Pass))
+        {
+            SWA.Message(JS, "Ingrese su Contraseña", eIcon.warning, align: eAlign.center);
+            return false;
+        }
+        return true;
+    }
+    private async void IniciarSesion()
+    {
+        if (Validaciones())
+        {
+            Password = SHA.Sha256(Pass);
+
+            if (!await Authentication.Existe(UserName))
+            {
+                SWA.Message(JS, "Las credenciales ingresadas no son correctas.", eIcon.warning, align: eAlign.center);
+                return;
+            }
+
+            Usuarios User = await Authentication.Registro(UserName);
+            if (User.Bloqueado)
+            {
+                SWA.Message(JS, "La cuenta fue bloqueada por múltiples intentos fallidos de inicio de sesión. Comunicarse con el administrador del sistema.", eIcon.error, align: eAlign.justify);
+                return;
+            }
+
+            if (!await Authentication.Existe(UserName, Password))
+            {
+                SWA.Message(JS, "Las credenciales ingresadas no son correctas.", eIcon.warning, align: eAlign.center);
+                BloqueoCuenta(UserName);
+                return;
+            }
+            var result = await Authentication.Authenticate(User);
+            if (result)
+            {
+                NM.NavigateTo("/home");
+            }
+        }
+    }
+    private async void BloqueoCuenta(string UserName)
+    {
+        try
+        {
+            Usuarios User = await Authentication.Registro(UserName);
+
+            if (User.Intentos >= (GRAL.ValidateByte(DAL_Parametros.Registro((byte)eParametros.BoqueoCuenta).Valor) - 1))
+            {
+                if (await Authentication.BloquearCuenta(UserName))
+                {
+                    SWA.Message(JS, "La cuenta fue bloqueada por múltiples intentos fallidos de inicio de sesión. Comunicarse con el administrador del sistema.", eIcon.error, align: eAlign.justify);
+                    return;
+                }
+            }
+
+            if (await Authentication.SumarIntento(UserName))
+            {
+                SWA.Message(JS, $"Si excede el máximo de intentos permitidos ({DAL_Parametros.Registro((byte)eParametros.BoqueoCuenta).Valor}), su cuenta será bloqueada", eIcon.warning, align: eAlign.justify);
+                return;
+            }
+
+        }
+        catch
+        {
+            SWA.Message(JS, "Ocurrio un error al intentar validar el bloqueo de la cuenta", eIcon.warning, align: eAlign.center);
+        }
+    }
+    private void CambiarTema(string Tema)
+    {
+        JS.InvokeVoidAsync("cambiarTemaBootstrap", Tema);
+    }
+    private void ValidateLoginOfRecoveryPassword(ChangeEventArgs e)
+    {
+        UserNameOfRecoveryPassword = (e.Value != null) ? e.Value.ToString() : "";
+        if (string.IsNullOrEmpty(UserNameOfRecoveryPassword) || string.IsNullOrWhiteSpace(UserNameOfRecoveryPassword))
+        {
+            borderUserName = "border-danger";
+            buttonEnabled = "disabled";
+            return;
+        }
+        borderUserName = "border-info";
+    }
+    private void ValidateEmailOfRecoveryPass(ChangeEventArgs e)
+    {
+        Correo = (e.Value != null) ? e.Value.ToString() : "";
+
+        if (!GRAL.ValidateEmail(Correo))
+        {
+            borderEmail = "border-danger";
+            buttonEnabled = "disabled";
+            return;
+        }
+
+        borderEmail = "border-info";
+        buttonEnabled = "";
+    }
+    private void ResetCorreo()
+    {
+        Correo = string.Empty;
+        UserNameOfRecoveryPassword = string.Empty;
+        borderEmail = "";
+        borderUserName = "";
+        buttonEnabled = "disabled";
+    }
+    private async void RestablecerPassword()
+    {
+        try
+        {
+            if (await ValidateRecoveryPassword())
+            {
+                string newPassword = "Sim123+";//PassUtility.GetPassword(12);
+                string body = $"Estimado usuario, su nueva contraseña es {newPassword}";
+                if (await Authentication.BuscarUsuario(Correo??"") != null)
+                {
+                    byte[] Passw = SHA.Sha256(newPassword);
+                    if (await Authentication.UpdatePassword(Passw, Correo??"", UserNameOfRecoveryPassword??""))
+                    {
+                        GRAL.EnviarCorreo("mejiam@alldevsolutions.net", Correo, "Restablecimiento Contraseña", body);
+                        SWA.Message(JS, "Su nueva contraseña fue enviada al correo proporcionado.", eIcon.success, align: eAlign.center);
+                        ResetCorreo();
+                        await JS.InvokeVoidAsync("HideModal", "exampleModal");
+                        return;
+                    }
+                    SWA.Message(JS, "Su contraseña no pudo ser restablecida, comuniquese con el administrador del sistema.", eIcon.info, align: eAlign.center);
+                }
+                SWA.Message(JS, "Su contraseña no pudo ser restablecida, comuniquese con el administrador del sistema.", eIcon.info, align: eAlign.center);
+            }
+        }
+        catch (Exception E)
+        {
+            SWA.Message(JS, "Ocurrio un error al intentar restablecer la contraseña", eIcon.warning, align: eAlign.center);
+        }
+    }
+    private async Task<bool> ValidateRecoveryPassword()
+    {
+        if (string.IsNullOrEmpty(UserNameOfRecoveryPassword) || string.IsNullOrWhiteSpace(UserNameOfRecoveryPassword))
+        {
+            SWA.Message(JS, "Estimado usuario para porder restablecer la contraseña necesita ingresar su usuario en el campo correspondiente", eIcon.warning, align: eAlign.justify);
+            return await Task.FromResult(false);
+        }
+        if (string.IsNullOrEmpty(Correo) || string.IsNullOrWhiteSpace(Correo))
+        {
+            SWA.Message(JS, "Estimado usuario para porder restablecer la contraseña necesita ingresar su correo en el campo correspondiente", eIcon.warning, align: eAlign.justify);
+            return await Task.FromResult(false);
+        }
+        var result = await Authentication.Registro(UserNameOfRecoveryPassword);
+        if (result.Bloqueado)
+        {
+            SWA.Message(JS, "Esta cuenta no permite recuperación de contraseña. Por favor comuniquese con el administrador del sistema.", eIcon.warning, align: eAlign.justify);
+            return await Task.FromResult(false);
+        }
+        return await Task.FromResult(true);
+    }
+}
